@@ -36,7 +36,7 @@ export async function createUser(user: Omit<User, 'id'>): Promise<ResultSetHeade
         /*
         Vamos usar o comando insert para cadastrar o usuário no banco de dados. Estamos usando também o comando await que irá esperar pelo cadastro completo do usuário. Na consulta do insert está sendo passada 2 parametros com o simbolo de ?. Consultas parametrizadas evitam a injeção de sql */
         const [result] = await pool.execute<ResultSetHeader>(
-            'INSERT INTO users (name, email) VALUES (?, ?)',
+            'INSERT INTO users (nomealuno, cpf, idade, telefone) VALUES (?, ?, ?, ?)',
             [user.name, user.email]
         );
         return result;
